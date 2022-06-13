@@ -21,13 +21,14 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "lint": "eslint . --ext .js",
-    "fix": "npx eslint --fix"
+    "fix": "eslint --fix"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-env": "7.13.15",
     "@expo-google-fonts/inter": "^0.2.2",
     "@expo-google-fonts/lato": "^0.2.2",
     "@expo-google-fonts/oswald": "^0.2.2",
+    "@types/styled-components-react-native": "^5.1.3",
     "css-to-react-native": "^3.0.0",
     "expo": "~45.0.0",
     "expo-font": "~10.1.0",
@@ -37,11 +38,12 @@
     "react-native": "0.68.2",
     "react-native-paper": "^4.12.1",
     "react-native-styled": "^0.0.4",
+    "react-native-svg": "^12.3.0",
     "react-native-web": "0.17.7",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.2",
+    "@babel/core": "7.13.15",
     "@babel/eslint-parser": "^7.5.4",
     "@react-native-community/eslint-config": "^3.0.2",
     "@types/styled-components": "^5.1.25",
