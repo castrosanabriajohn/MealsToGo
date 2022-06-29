@@ -1,13 +1,11 @@
-import React from "react";
-import { FlatList } from "react-native";
-import { Searchbar } from "react-native-paper";
+import React, { useContext } from "react";
+import { FlatList, TouchableOpacity } from "react-native";
+import { ActivityIndicator, Colors } from "react-native-paper";
 import styled from "styled-components/native";
-import RestaurantInfoCard from "../components/restaurant-info-card.component";
+import RestaurantInfoCardComponent from "../components/restaurant-info-card.component";
+import Search from "../components/search-component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
-
-const SearchArea = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-`;
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 
 const ListArea = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -15,16 +13,41 @@ const ListArea = styled(FlatList).attrs({
   },
 })``;
 
-export const RestaurantsScreen = () => (
-  <SafeArea>
-    <SearchArea>
-      <Searchbar />
-    </SearchArea>
-    <ListArea
-      data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }]}
-      renderItem={() => <RestaurantInfoCard />}
-      keyExtractor={(item) => item.name}
-      contentContainerStyle={{ padding: 16 }}
-    />
-  </SafeArea>
-);
+const LoadingArea = styled.View`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+`;
+
+const LoadingComponent = styled(ActivityIndicator)`
+  margin-left: -25px;
+`;
+
+export const RestaurantsScreen = ({ navigation }) => {
+  const { isLoading, restaurants } = useContext(RestaurantsContext);
+  return (
+    <SafeArea>
+      {isLoading && (
+        <LoadingArea>
+          <LoadingComponent size={50} animating={true} color={Colors.blue300} />
+        </LoadingArea>
+      )}
+      <Search />
+      <ListArea
+        data={restaurants}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("RestaurantDetails", {
+                restaurant: item,
+              })
+            }
+          >
+            <RestaurantInfoCardComponent restaurant={item} />
+          </TouchableOpacity>
+        )}
+        keyExtractor={(item) => item.name}
+      />
+    </SafeArea>
+  );
+};

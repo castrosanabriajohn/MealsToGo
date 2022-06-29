@@ -3,7 +3,7 @@ import { Card } from "react-native-paper";
 
 export const InfoSection = styled.View`
   padding: ${(props) => props.theme.space[3]};
-  /* background-color: ${(props) => props.theme.colors.ui.error}; */
+  /*   background-color: ${(props) => props.theme.colors.ui.error}; */
 `;
 
 export const Address = styled.Text`
@@ -13,7 +13,7 @@ export const Address = styled.Text`
 `;
 
 export const RestaurantCard = styled(Card)`
-  background-color: ${(props) => props.theme.colors.bg.primary};
+  /*   background-color: ${(props) => props.theme.colors.bg.primary}; */
   margin-bottom: ${(props) => props.theme.space[3]};
 `;
 
@@ -39,7 +39,7 @@ export const SectionEnd = styled.View`
   flex: 1;
   flex-direction: row;
   justify-content: flex-end;
-  /*  background-color: ${(props) => props.theme.colors.brand.primary}; */
+  /*   background-color: ${(props) => props.theme.colors.brand.primary}; */
 `;
 
 export const Icon = styled.Image`
